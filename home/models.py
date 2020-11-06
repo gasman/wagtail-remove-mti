@@ -21,20 +21,9 @@ class GalleryItem(Orderable):
         FieldPanel('name')
     ]
 
-class GalleryItemAbstract(Orderable):
-    name = models.CharField(max_length=255)
-
-    panels = [
-        FieldPanel('name')
-    ]
-
     class Meta(Orderable.Meta):
         abstract = True
 
 
 class HomePageGalleryItem(GalleryItem):
     page = ParentalKey('home.HomePage', related_name='gallery_items')
-
-
-class HomePageGalleryItemNew(GalleryItemAbstract):
-    page = ParentalKey('home.HomePage', related_name='gallery_items_new')
